@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deep Fake Video Detection</title>
+    <style>
+         body {
+			background: linear-gradient(to bottom right, #ff6699, #ffcc99);
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        h3 {
+            text-align: center;
+            color: white;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        #file_button {
+            background-color: #008CBA;
+        }
+
+        #submit_button {
+            background-color: #f44336;
+        }
+
+        #reset_button {
+            background-color: #555555;
+        }
+
+        #file_button:hover, #submit_button:hover, #reset_button:hover {
+            background-color: #3e8e41;
+        }
+
+        #classify_button {
+            background-color: #008CBA;
+        }
+
+        #classify_button:hover {
+            background-color: #3e8e41;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        #upload_button {
+            background-color: #3498db;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #classify_button {
+            background-color: #27ae60;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #classify_button:hover {
+            background-color: #218c53;
+        }
+
+        #result1,
+        #result2 {
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deep Fake Video Detection</h1>
+    <br>
+    <h3 style="text-align:center;">Upload Video</h3>
+
+    <form action="/classify" method="post" enctype="multipart/form-data" style="text-align:center;">
+        <input class="file-input" type="file" id="video" name="video" accept="video/*">
+        <br>
+        <br>
+        <input type="button" value="Choose File" id="upload_button">
+        <br>
+        <br>
+        <input type="submit" value="Classify" name="classify" id="classify_button">
+    </form>
+
+    <h3 id="result1">Deep Fake Video: {{result1}}</h3>
+    <h3 id="result2">Deep Fake Audio: {{result2}}</h3>
+
+    <script>
+        const uploadButton = document.getElementById("upload_button");
+        const fileInput = document.getElementById("video");
+        uploadButton.addEventListener("click", function () {
+            fileInput.click();
+        });
+
+        const classifyButton = document.getElementById("classify_button");
+        const result1 = document.getElementById("result1");
+        const result2 = document.getElementById("result2");
+        classifyButton.addEventListener("click", function () {
+            result1.style.display = "none";
+            result2.style.display = "none";
+        });
+    </script>
+</body>
+</html>
