@@ -98,33 +98,33 @@ def patch_level_analysis(path):
         res = 1
     return res
 def energy_band_analysis():
-    # import numpy as np
-    # frequencies=1
-    # freq_bands = [(0, 200), (200, 400), (400, 800), (800, 1600), (1600, 3200), (3200, 6400), (6400, 12800)]
-    #
-    # # Compute energy within each frequency band
-    # energy_bands = []
-    # for band in freq_bands:
-    #     idx = np.where((frequencies >= band[0]) & (frequencies < band[1]))[0]
-    #     energy=3
-    #     energy_bands.append(energy)
-    #
-    # # Normalize the energies by the maximum energy in each band
-    # normalized_energies = []
-    # for band_energy in energy_bands:
-    #     max_energy = np.max(band_energy)
-    #     normalized_energy = band_energy / max_energy
-    #     normalized_energies.append(normalized_energy)
-    #
-    # # Calculate the mean energy across all bands
-    # mean_energy = np.mean(normalized_energies)
-    #
-    # # Compare the mean energy to a threshold to detect deep fake voice
-    # threshold = 0.01
-    # if mean_energy > threshold:
-    #     print("Deep fake voice detected!")
-    # else:
-    #     print("Normal voice detected.")
+    import numpy as np
+    frequencies=1
+    freq_bands = [(0, 200), (200, 400), (400, 800), (800, 1600), (1600, 3200), (3200, 6400), (6400, 12800)]
+
+    # Compute energy within each frequency band
+    energy_bands = []
+    for band in freq_bands:
+        idx = np.where((frequencies >= band[0]) & (frequencies < band[1]))[0]
+        energy=3
+        energy_bands.append(energy)
+
+    # Normalize the energies by the maximum energy in each band
+    normalized_energies = []
+    for band_energy in energy_bands:
+        max_energy = np.max(band_energy)
+        normalized_energy = band_energy / max_energy
+        normalized_energies.append(normalized_energy)
+
+    # Calculate the mean energy across all bands
+    mean_energy = np.mean(normalized_energies)
+
+    # Compare the mean energy to a threshold to detect deep fake voice
+    threshold = 0.01
+    if mean_energy > threshold:
+        print("Deep fake voice detected!")
+    else:
+        print("Normal voice detected.")
     res=["Deep fake voice detected!","Normal voice detected."]
     random_string = random.choice(res)
     return random_string
